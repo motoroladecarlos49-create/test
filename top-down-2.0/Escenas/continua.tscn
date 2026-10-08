@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cxt4oe5q1h4tl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbfun"]
+size = Vector2(41, 161)
+
+[node name="Continua" type="Area2D" unique_id=1509250451]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1893424524]
+position = Vector2(20.5, 81.5)
+shape = SubResource("RectangleShape2D_vbfun")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=915852606]

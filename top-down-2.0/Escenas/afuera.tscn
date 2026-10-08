@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dvhn6mfoti5ko"]
+
+[ext_resource type="Texture2D" uid="uid://bmky7f80ny026" path="res://Imagenes/afuera 2.jpg" id="1_1e3u7"]
+[ext_resource type="Script" uid="uid://puv0wgvopp1i" path="res://Partes/afuera.gd" id="1_a3jaw"]
+[ext_resource type="PackedScene" uid="uid://cblidwpvj7cxm" path="res://Escenas/door.tscn" id="2_4i40o"]
+[ext_resource type="Script" uid="uid://8m583ukcbjb6" path="res://Script/door.gd" id="4_a3jaw"]
+[ext_resource type="PackedScene" uid="uid://cwv8v81d6omj4" path="res://Escenas/player.tscn" id="4_mqkfo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vbfun"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbfun"]
+size = Vector2(1161, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyvdy"]
+size = Vector2(47, 230)
+
+[node name="afuera" type="Node2D" unique_id=1496612257]
+script = ExtResource("1_a3jaw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=36733458]
+position = Vector2(576, 324)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1041397979]
+position = Vector2(576, 324)
+physics_material_override = SubResource("PhysicsMaterial_vbfun")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1389307433]
+position = Vector2(1.0000153, -1.4999588)
+scale = Vector2(2.3, 2.308511)
+texture = ExtResource("1_1e3u7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=561751148]
+position = Vector2(-7, 136)
+shape = SubResource("RectangleShape2D_vbfun")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=292045341]
+position = Vector2(-10, 300)
+shape = SubResource("RectangleShape2D_vbfun")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1205050841]
+position = Vector2(596, 224)
+shape = SubResource("RectangleShape2D_nyvdy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1157000018]
+position = Vector2(-607, 219)
+shape = SubResource("RectangleShape2D_nyvdy")
+
+[node name="Player" parent="." unique_id=1794548708 instance=ExtResource("4_mqkfo")]
+position = Vector2(704, 502)
+
+[node name="door" parent="." unique_id=84999603 instance=ExtResource("2_4i40o")]
+script = ExtResource("4_a3jaw")
+
+[node name="CollisionShape2D" parent="door" index="0" unique_id=1574510788]
+position = Vector2(711, 486)
+
+[node name="SpawnPoint" parent="door" index="1" unique_id=256198977]
+position = Vector2(703, 561)
+
+[editable path="door"]

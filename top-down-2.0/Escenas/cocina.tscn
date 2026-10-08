@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bqjai1glruugt"]
+
+[ext_resource type="Texture2D" uid="uid://dabc0g7auoifx" path="res://Imagenes/cocina.jpeg" id="1_i514u"]
+[ext_resource type="Script" uid="uid://t4ihc21lmpn6" path="res://Partes/cocina.gd" id="1_r5ydy"]
+[ext_resource type="PackedScene" uid="uid://cwv8v81d6omj4" path="res://Escenas/player.tscn" id="2_ajdot"]
+[ext_resource type="PackedScene" uid="uid://cxt4oe5q1h4tl" path="res://Escenas/continua.tscn" id="3_5ws5f"]
+[ext_resource type="Script" uid="uid://8m583ukcbjb6" path="res://Script/door.gd" id="4_5ws5f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbfun"]
+size = Vector2(1461.8752, 73.12506)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8g73"]
+size = Vector2(71.093765, 344.6036)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyvdy"]
+size = Vector2(456.25024, 103.74991)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e70g"]
+size = Vector2(422.3058, 60.817673)
+
+[node name="cocina" type="Node2D" unique_id=345859162]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_r5ydy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=898679627]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=303828225]
+position = Vector2(720, 400.625)
+scale = Vector2(1.0549451, 1.0628254)
+texture = ExtResource("1_i514u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=804753524]
+position = Vector2(730, 696.25)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_vbfun")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=568447673]
+position = Vector2(721.25, 476.24994)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_vbfun")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=2012531927]
+position = Vector2(1402.4998, 708.74994)
+scale = Vector2(1.0549449, 1.0628252)
+shape = SubResource("RectangleShape2D_r8g73")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=58005494]
+position = Vector2(-41.250004, 679.9999)
+scale = Vector2(1.0549449, 1.0628252)
+shape = SubResource("RectangleShape2D_r8g73")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1162315824]
+position = Vector2(415, 511.25)
+scale = Vector2(0.99999946, 0.99999946)
+shape = SubResource("RectangleShape2D_nyvdy")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=1415197128]
+position = Vector2(1047.5, 527.5)
+rotation = 0.38397247
+scale = Vector2(0.9999992, 0.9999992)
+shape = SubResource("RectangleShape2D_4e70g")
+
+[node name="Player" parent="." unique_id=1794548708 instance=ExtResource("2_ajdot")]
+position = Vector2(826.25, 530)
+scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=728862799]
+position = Vector2(726.25, 396.25)
+scale = Vector2(0.99999994, 0.99999994)
+offset = Vector2(-0.21, 0)
+
+[node name="Continua" parent="." unique_id=1509250451 instance=ExtResource("3_5ws5f")]
+script = ExtResource("4_5ws5f")
+
+[node name="CollisionShape2D" parent="Continua" index="0" unique_id=1893424524]
+position = Vector2(17.5, 671.24994)
+scale = Vector2(2, 2)
+
+[node name="SpawnPoint" parent="Continua" index="1" unique_id=915852606]
+position = Vector2(103.75, 740)
+
+[connection signal="area_shape_entered" from="Continua" to="Continua" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Continua" to="Continua" method="_on_area_shape_exited"]
+
+[editable path="Continua"]
